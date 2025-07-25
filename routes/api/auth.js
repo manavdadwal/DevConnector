@@ -19,7 +19,7 @@ router.get("/", auth, async (req, res) => {
         return res.json(user);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ msg: "Server Error" });
+        res.status(500).json("Server Error");
     }
 });
 
