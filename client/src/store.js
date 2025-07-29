@@ -4,7 +4,7 @@ import rootReducer from "./reducers";
 
 const store = configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware(), // default includes thunk
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
     devTools: composeWithDevTools(), // process.env.NODE_ENV !== "production",
 });
 
