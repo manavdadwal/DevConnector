@@ -1,7 +1,7 @@
 import { SET_ALERT, REMOVE_ALERT } from "../components/actions/types";
-const initialState = [];
+const initialState = []; // Initial state ensures the store is populated with default data at startup.
 
-export default function checkState(state = initialState, action) {
+export default function alertReducer(state = initialState, action) {
     const { type, payload } = action;
     switch (type) {
         case SET_ALERT:

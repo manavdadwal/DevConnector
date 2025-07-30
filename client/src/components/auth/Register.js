@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setAlert } from "../actions/alert";
+import { authRegister } from "../actions/auth";
+import PropTypes from "prop-types";
 
-const Register = (props) => {
+const Register = ({ setAlert, authRegister }) => {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -24,29 +26,31 @@ const Register = (props) => {
         e.preventDefault();
 
         if (password !== password2) {
-            props.setAlert("Passwords do not match.", "danger");
+            setAlert("Passwords do not match.", "danger");
         } else {
-            console.log("SUCCESS");
-            console.log(formData);
-            const newUser = {
-                name,
-                email,
-                password,
-            };
+            // console.log("SUCCESS");
+            // console.log(formData);
+            // const newUser = {
+            //     name,
+            //     email,
+            //     password,
+            // };
 
-            try {
-                const config = {
-                    headers: {
-                        "Content-Type": "application/json",
-                        crossOriginIsolated: false,
-                    },
-                };
-                const body = JSON.stringify(newUser);
-                const res = await axios.post("/api/users", body, config);
-                console.log(res.data);
-            } catch (error) {
-                console.error(error.res);
-            }
+            // try {
+            //     const config = {
+            //         headers: {
+            //             "Content-Type": "application/json",
+            //             crossOriginIsolated: false,
+            //         },
+            //     };
+            //     const body = JSON.stringify(newUser);
+            //     const res = await axios.post("/api/users", body, config);
+            //     console.log(res.data);
+            // } catch (error) {
+            //     console.error(error.res);
+            // }
+
+            authRegister({ name, email, password });
         }
     };
 
@@ -63,7 +67,7 @@ const Register = (props) => {
                             type="text"
                             placeholder="Name"
                             name="name"
-                            required
+                            // required
                             value={name}
                             onChange={(e) => onChange(e)}
                         />
@@ -74,7 +78,7 @@ const Register = (props) => {
                             placeholder="Email Address"
                             name="email"
                             value={email}
-                            required
+                            // required
                             onChange={(e) => onChange(e)}
                         />
                         <small className="form-text">
@@ -87,7 +91,7 @@ const Register = (props) => {
                             type="password"
                             placeholder="Password"
                             name="password"
-                            minLength="6"
+                            // minLength="6"
                             value={password}
                             onChange={(e) => onChange(e)}
                         />{" "}
@@ -97,7 +101,7 @@ const Register = (props) => {
                             type="password"
                             placeholder="Confirm Password"
                             name="password2"
-                            minLength="6"
+                            // minLength="6"
                             value={password2}
                             onChange={(e) => onChange(e)}
                         />
@@ -117,4 +121,9 @@ const Register = (props) => {
     );
 };
 
-export default connect(null, { setAlert })(Register);
+Register.propTypes = {
+    setAlert: PropTypes.func.isRequired,
+    authRegister: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert, authRegister })(Register); // The connect function connects a component to the Redux store.
