@@ -8,6 +8,7 @@ import Login from "./components/auth/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Alert from "./components/layout/Alert";
+import Dashboard from "./components/dashboard/Dashboard";
 // REDUX
 import { Provider } from "react-redux";
 import store from "./store";
@@ -40,6 +41,11 @@ const App = () => {
                                 element={<Register />}
                             />
                             <Route exact path="/login" element={<Login />} />
+                            <Route
+                                exact
+                                path="/dashboard"
+                                element={<Dashboard />}
+                            />
                         </Routes>
                     </section>
                 </Fragment>
