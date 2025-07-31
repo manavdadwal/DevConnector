@@ -110,7 +110,7 @@ const Register = ({ setAlert, authRegister, isAuthenticated }) => {
                             value={password2}
                             onChange={(e) => onChange(e)}
                         />
-                    </div>
+                    </div>{" "}
                     <input
                         type="submit"
                         className="btn btn-primary"

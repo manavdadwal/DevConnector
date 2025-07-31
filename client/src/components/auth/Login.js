@@ -56,7 +56,7 @@ const Login = ({ authLogin, isAuthenticated }) => {
                             value={password}
                             onChange={(e) => onChange(e)}
                         />
-                    </div>
+                    </div>{" "}
                     <input
                         type="submit"
                         className="btn btn-primary"
