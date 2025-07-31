@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import { setAlert } from "../actions/alert";
 import { authRegister } from "../actions/auth";
 import PropTypes from "prop-types";
 
-const Register = ({ setAlert, authRegister }) => {
+const Register = ({ setAlert, authRegister, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -54,6 +54,11 @@ const Register = ({ setAlert, authRegister }) => {
         }
     };
 
+    // Navigate if login
+    if (isAuthenticated) {
+        return <Navigate to="/dashboard" />;
+    }
+
     return (
         <Fragment>
             <section className="container">
@@ -94,7 +99,7 @@ const Register = ({ setAlert, authRegister }) => {
                             // minLength="6"
                             value={password}
                             onChange={(e) => onChange(e)}
-                        />{" "}
+                        />
                     </div>
                     <div className="form-group">
                         <input
@@ -124,6 +129,11 @@ const Register = ({ setAlert, authRegister }) => {
 Register.propTypes = {
     setAlert: PropTypes.func.isRequired,
     authRegister: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert, authRegister })(Register); // The connect function connects a component to the Redux store.
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, authRegister })(Register); // The connect function connects a component to the Redux store.
