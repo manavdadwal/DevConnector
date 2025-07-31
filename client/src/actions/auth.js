@@ -8,9 +8,9 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-} from "../actions/types";
+} from "./types";
 
-import setAuthToken from "../../utils/setAuthToken";
+import setAuthToken from "../utils/setAuthToken";
 
 // Load User
 export const loadUser = () => async (dispatch) => {

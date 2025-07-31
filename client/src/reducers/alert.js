@@ -1,4 +1,4 @@
-import { SET_ALERT, REMOVE_ALERT } from "../components/actions/types";
+import { SET_ALERT, REMOVE_ALERT } from "../actions/types";
 const initialState = []; // Initial state ensures the store is populated with default data at startup.
 
 export default function alertReducer(state = initialState, action) {
