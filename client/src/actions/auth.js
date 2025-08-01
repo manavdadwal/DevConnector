@@ -9,7 +9,6 @@ import {
     LOGIN_FAIL,
     LOGOUT,
 } from "./types";
-
 import setAuthToken from "../utils/setAuthToken";
 
 // Load User
