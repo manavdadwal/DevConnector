@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Alert from "./components/layout/Alert";
 import Dashboard from "./components/dashboard/Dashboard";
+import PrivateRoute from "components/routing/PrivateRoute";
 // REDUX
 import { Provider } from "react-redux";
 import store from "./store";
@@ -27,28 +28,22 @@ const App = () => {
     return (
         <Provider store={store}>
             <BrowserRouter>
-                <Fragment>
+                <>
                     <Navbar />
                     <Routes>
                         <Route path="/" element={<Landing />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route
+                            path="/dashboard"
+                            element={
+                                <PrivateRoute>
+                                    <Dashboard />
+                                </PrivateRoute>
+                            }
+                        />
                     </Routes>
-                    <section className="container">
-                        <Alert />
-                        <Routes>
-                            <Route
-                                exact
-                                path="/register"
-                                element={<Register />}
-                            />
-                            <Route exact path="/login" element={<Login />} />
-                            <Route
-                                exact
-                                path="/dashboard"
-                                element={<Dashboard />}
-                            />
-                        </Routes>
-                    </section>
-                </Fragment>
+                </>
             </BrowserRouter>
         </Provider>
     );
