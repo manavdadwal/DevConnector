@@ -10,6 +10,7 @@ import "./App.css";
 import Alert from "./components/layout/Alert";
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "components/routing/PrivateRoute";
+import CreateProfile from "components/profile-forms/CreateProfile";
 // REDUX
 import { Provider } from "react-redux";
 import store from "./store";
@@ -39,6 +40,14 @@ const App = () => {
                             element={
                                 <PrivateRoute>
                                     <Dashboard />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="/create-profile"
+                            element={
+                                <PrivateRoute>
+                                    <CreateProfile />
                                 </PrivateRoute>
                             }
                         />
