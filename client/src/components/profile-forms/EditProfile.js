@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProfile, getCurrentProfile } from "actions/profile";
-import Spinner from "components/layout/Spinner";
 import { Link, useNavigate } from "react-router-dom";
 
 const EditProfile = ({
