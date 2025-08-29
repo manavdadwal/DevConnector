@@ -33,14 +33,14 @@ const AddExperience = ({ addExperience }) => {
 
     return (
         <Fragment>
-            <h1 class="large text-primary">Add An Experience</h1>
-            <p class="lead">
-                <i class="faS fa-code-branch"></i> Add any developer/programming
+            <h1 className="large text-primary">Add An Experience</h1>
+            <p className="lead">
+                <i className="faS fa-code-branch"></i> Add any developer/programming
                 positions that you have had in the past
             </p>
             <small>* = required field</small>
-            <form class="form" onSubmit={(e) => onSubmit(e)}>
-                <div class="form-group">
+            <form className="form" onSubmit={(e) => onSubmit(e)}>
+                <div className="form-group">
                     <input
                         type="text"
                         placeholder="* Job Title"
@@ -50,7 +50,7 @@ const AddExperience = ({ addExperience }) => {
                         required
                     />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <input
                         type="text"
                         placeholder="* Company"
@@ -60,7 +60,7 @@ const AddExperience = ({ addExperience }) => {
                         required
                     />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <input
                         type="text"
                         placeholder="Location"
@@ -69,7 +69,7 @@ const AddExperience = ({ addExperience }) => {
                         onChange={(e) => onChange(e)}
                     />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <h4>From Date</h4>
                     <input
                         type="date"
@@ -78,7 +78,7 @@ const AddExperience = ({ addExperience }) => {
                         onChange={(e) => onChange(e)}
                     />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <p>
                         <input
                             type="checkbox"
@@ -96,7 +96,7 @@ const AddExperience = ({ addExperience }) => {
                         Current Job
                     </p>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <h4>To Date</h4>
                     <input
                         type="date"
@@ -106,7 +106,7 @@ const AddExperience = ({ addExperience }) => {
                         disabled={toDateDisabled ? "disabled" : ""}
                     />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <textarea
                         name="description"
                         cols="30"
@@ -116,8 +116,8 @@ const AddExperience = ({ addExperience }) => {
                         onChange={(e) => onChange(e)}
                     ></textarea>
                 </div>
-                <input type="submit" class="btn btn-primary my-1" />
-                <Link class="btn btn-light my-1" to="/dashboard">
+                <input type="submit" className="btn btn-primary my-1" />
+                <Link className="btn btn-light my-1" to="/dashboard">
                     Go Back
                 </Link>
             </form>
