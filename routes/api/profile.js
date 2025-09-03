@@ -9,6 +9,7 @@ const config = require("config");
 const bcrypt = require("bcryptjs");
 const usersModel = require("../../models/users-model");
 const request = require("request");
+const postModel = require("../../models/post-model");
 
 /**
  * @route         - GET api/profile/me
@@ -170,6 +171,8 @@ router.get("/user/:user_id", async (req, res) => {
 router.delete("/", auth, async (req, res) => {
     try {
         // @todo - remove users & posts
+
+        await postModel.deleteMany({ user: req.user.id });
 
         // Remove profiles
         await profileModel.findOneAndDelete({
