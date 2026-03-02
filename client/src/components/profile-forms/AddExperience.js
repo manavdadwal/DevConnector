@@ -35,7 +35,7 @@ const AddExperience = ({ addExperience }) => {
         <Fragment>
             <h1 className="large text-primary">Add An Experience</h1>
             <p className="lead">
-                <i className="faS fa-code-branch"></i> Add any developer/programming
+                <i className="fas fa-code-branch"></i> Add any developer/programming
                 positions that you have had in the past
             </p>
             <small>* = required field</small>
@@ -83,7 +83,6 @@ const AddExperience = ({ addExperience }) => {
                         <input
                             type="checkbox"
                             name="current"
-                            value={current}
                             checked={current}
                             onChange={(e) => {
                                 setFormData({
@@ -103,7 +102,7 @@ const AddExperience = ({ addExperience }) => {
                         name="to"
                         value={to}
                         onChange={(e) => onChange(e)}
-                        disabled={toDateDisabled ? "disabled" : ""}
+                        disabled={toDateDisabled}
                     />
                 </div>
                 <div className="form-group">

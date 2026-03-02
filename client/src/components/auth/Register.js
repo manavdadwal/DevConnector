@@ -63,7 +63,7 @@ const Register = ({ setAlert, authRegister, isAuthenticated }) => {
             <section className="container">
                 <h1 className="large text-primary">Sign Up</h1>
                 <p className="lead">
-                    <i className="faS fa-user"></i> Create Your Account
+                    <i className="fas fa-user"></i> Create Your Account
                 </p>
                 <form className="form" onSubmit={(e) => onSubmit(e)}>
                     <div className="form-group">
@@ -114,7 +114,6 @@ const Register = ({ setAlert, authRegister, isAuthenticated }) => {
                         type="submit"
                         className="btn btn-primary"
                         value="Register"
-                        onChange={(e) => onChange(e)}
                     />
                 </form>
                 <p className="my-1">

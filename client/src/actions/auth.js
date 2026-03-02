@@ -53,7 +53,7 @@ export const authRegister =
             });
             dispatch(loadUser());
         } catch (error) {
-            const errors = error.response.data.errors;
+            const errors = error.response?.data?.errors;
 
             if (errors) {
                 errors.forEach((error) => {
@@ -87,7 +87,7 @@ export const authLogin =
             });
             dispatch(loadUser());
         } catch (error) {
-            const errors = error.response.data.errors;
+            const errors = error.response?.data?.errors;
 
             if (errors) {
                 errors.forEach((error) => {

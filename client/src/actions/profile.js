@@ -5,6 +5,8 @@ import {
     GET_PROFILE,
     PROFILE_ERROR,
     UPDATE_PROFILE,
+    GET_PROFILES,
+    GET_REPOS,
 } from "actions/types";
 import { setAlert } from "./alert";
 
@@ -20,8 +22,66 @@ export const getCurrentProfile = () => async (dispatch) => {
         dispatch({
             type: PROFILE_ERROR,
             payload: {
-                msg: error.response.statusText,
-                status: error.response.status,
+                msg: error.response?.statusText || "Server Error",
+                status: error.response?.status || 500,
+            },
+        });
+    }
+};
+
+// Get All Profile
+export const getProfiles = () => async (dispatch) => {
+    dispatch({ type: CLEAR_PROFILE });
+    try {
+        const res = await axios.get("/api/profile");
+        dispatch({
+            type: GET_PROFILES,
+            payload: res.data,
+        });
+    } catch (error) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {
+                msg: error.response?.statusText || "Server Error",
+                status: error.response?.status || 500,
+            },
+        });
+    }
+};
+
+// Get Profile by ID
+export const getProfileById = (userId) => async (dispatch) => {
+    try {
+        const res = await axios.get(`/api/profile/user/${userId}`);
+        dispatch({
+            type: GET_PROFILE,
+            payload: res.data,
+        });
+    } catch (error) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {
+                msg: error.response?.statusText || "Server Error",
+                status: error.response?.status || 500,
+            },
+        });
+    }
+};
+
+// Get Github repos
+export const getGithubRepoos = (username) => async (dispatch) => {
+    try {
+        const res = await axios.get(`/api/profile/github/${username}`);
+        dispatch({
+            type: GET_REPOS,
+            payload: res.data,
+        });
+    } catch (error) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {
+                msg: error.response?.statusText || "Server Error",
+                status: error.response?.status || 500,
             },
         });
     }
@@ -56,7 +116,7 @@ export const createProfile =
                 navigate("/dashboard");
             }
         } catch (err) {
-            const errors = err.response.data.errors;
+            const errors = err.response?.data?.errors;
 
             if (errors) {
                 errors.forEach((error) => {
@@ -100,7 +160,7 @@ export const addExperience =
 
             navigate("/dashboard");
         } catch (err) {
-            const errors = err.response.data.errors;
+            const errors = err.response?.data?.errors;
 
             if (errors) {
                 errors.forEach((error) => {
@@ -144,7 +204,7 @@ export const addEducation =
 
             navigate("/dashboard");
         } catch (err) {
-            const errors = err.response.data.errors;
+            const errors = err.response?.data?.errors;
 
             if (errors) {
                 errors.forEach((error) => {
@@ -178,8 +238,8 @@ export const deleteExperience = (id) => async (dispatch) => {
         dispatch({
             type: PROFILE_ERROR,
             payload: {
-                msg: err.response.statusText,
-                status: err.response.status,
+                msg: err.response?.statusText || "Server Error",
+                status: err.response?.status || 500,
             },
         });
     }
@@ -201,8 +261,8 @@ export const deleteEducation = (id) => async (dispatch) => {
         dispatch({
             type: PROFILE_ERROR,
             payload: {
-                msg: err.response.statusText,
-                status: err.response.status,
+                msg: err.response?.statusText || "Server Error",
+                status: err.response?.status || 500,
             },
         });
     }

@@ -34,7 +34,7 @@ const Login = ({ authLogin, isAuthenticated }) => {
             <section className="container">
                 <h1 className="large text-primary">Sign In</h1>
                 <p className="lead">
-                    <i className="faS fa-user"></i> Sing In Your Account
+                    <i className="fas fa-user"></i> Sign In Your Account
                 </p>
                 <form className="form" onSubmit={(e) => onSubmit(e)}>
                     <div className="form-group">
@@ -61,7 +61,6 @@ const Login = ({ authLogin, isAuthenticated }) => {
                         type="submit"
                         className="btn btn-primary"
                         value="Login"
-                        onChange={(e) => onChange(e)}
                     />
                 </form>
                 <p className="my-1">
