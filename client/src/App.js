@@ -19,6 +19,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import setAuthToken from "utils/setAuthToken";
 import { loadUser } from "actions/auth";
+import Profile from "components/profile/Profile";
 
 if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -40,6 +41,7 @@ const App = () => {
                         <Route path="/register" element={<Register />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/profiles" element={<Profiles />} />
+                        <Route path="/profile/:id" element={<Profile />} />
                         <Route
                             path="/dashboard"
                             element={
